@@ -1,0 +1,191 @@
+:root {
+  color: #1c2430;
+  background: #e4dfd4;
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+button, input, select { font: inherit; color: inherit; }
+
+button {
+  border: 1px solid transparent;
+  background: #2a3441;
+  color: #f3f0e8;
+  border-radius: 4px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+button:hover { background: #364354; }
+
+.app {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.topbar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #1e2630;
+  color: #f3f0e8;
+}
+
+.brand { display: flex; align-items: center; gap: 8px; }
+.brand strong { display: block; }
+.brand small { color: #b7c0c8; }
+
+.brand-mark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #e7edf1;
+  background:
+    linear-gradient(#d06a32, #d06a32) 3px 3px / 8px 2px no-repeat,
+    linear-gradient(#d06a32, #d06a32) 3px 8px / 8px 2px no-repeat,
+    linear-gradient(#d06a32, #d06a32) 3px 13px / 8px 2px no-repeat;
+}
+
+.editor {
+  padding: 14px 14px 28px;
+  background: #efeae1;
+  border-right: 1px solid #d5cec2;
+  overflow: auto;
+}
+
+.editor h2 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.editor section + section {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #d5cec2;
+}
+
+.editor label {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.editor input, .editor select {
+  width: 100%;
+  border: 1px solid #c9c0b2;
+  background: #fff;
+  border-radius: 4px;
+  padding: 6px 8px;
+}
+
+.unit { display: flex; align-items: center; gap: 6px; }
+.unit input { width: auto; flex: 1; }
+
+.editor .row, .zoom-row { display: flex; gap: 8px; align-items: center; }
+
+.note { margin: 8px 0; color: #3d4652; font-size: 13px; }
+
+.opening-list, .register-list { list-style: none; padding: 0; margin: 8px 0; }
+.opening-list li, .register-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.stage {
+  min-width: 0;
+  padding: 14px 16px 32px;
+}
+
+.counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.counts span {
+  background: #fff;
+  border: 1px solid #d5cec2;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-weight: 650;
+}
+
+.sentence {
+  margin: 0 0 12px;
+  max-width: 78rem;
+}
+
+.viewport {
+  overflow: auto;
+  border: 1px solid #d5cec2;
+  background: #f4f1ea;
+  min-height: 420px;
+  max-height: 72vh;
+}
+
+.ceiling { display: block; width: 100%; height: auto; }
+
+.sheet {
+  margin-top: 22px;
+  background: #fff;
+  border: 1px solid #d5cec2;
+  padding: 18px 18px 28px;
+}
+
+.sheet h2, .sheet h3, .sheet h4 { margin: 0 0 8px; }
+.sheet h3 { margin-top: 18px; }
+.sheet-head p { margin: 0 0 8px; }
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #6a5c4e;
+}
+
+.sheet-drawing { margin: 8px 0 12px; }
+.sheet table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.sheet th, .sheet td { border-bottom: 1px solid #e4ddd2; text-align: left; padding: 6px 8px 6px 0; vertical-align: top; }
+.sheet tr.is-open td { color: #6e4b32; }
+
+.swatch {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-right: 6px;
+  border-radius: 2px;
+}
+
+@media (max-width: 860px) {
+  .app { grid-template-columns: 1fr; }
+  .editor { border-right: 0; border-bottom: 1px solid #d5cec2; }
+  .viewport { max-height: none; }
+}
+
+@media print {
+  body { background: #fff; }
+  .topbar, .editor, .zoom-row, .counts { display: none !important; }
+  .app { display: block; }
+  .stage { padding: 0; }
+  .stage > .sentence, .stage > .viewport { display: none !important; }
+  .sheet { border: 0; margin: 0; padding: 0; }
+  .sheet-drawing { max-height: 110mm; overflow: hidden; }
+  @page { size: A4 landscape; margin: 12mm; }
+}
